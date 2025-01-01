@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "MacroZone": {
+      "commandName": "Project",
+      "commandLineArgs": "-h"
+    }
+  }
+}
