@@ -8,8 +8,19 @@ public class Program
         {
             Console.WriteLine("Commands:");
             Console.WriteLine("--help or -h: Show this menu");
-            return;
         }
+        string filePath = "C:\\Users\\evanj\\test.txt";
 
+        if (File.Exists(filePath))
+        {
+            string content = File.ReadAllText(filePath);
+            //Console.WriteLine("File Content:");
+            //Console.WriteLine(content);
+        }
+        else
+        {
+            Console.WriteLine($"The file {filePath} does not exist.");
+        }
     }
+
 }
