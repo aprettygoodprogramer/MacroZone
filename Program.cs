@@ -17,8 +17,8 @@ public class Program
             return;
         }
 
-        macroReader.readFile();
-        macroReader.Makeinstructions();
+        macroReader.ReadFile();
+        macroReader.MakeInstructions();
     }
 
     private static void DisplayFileContent()
