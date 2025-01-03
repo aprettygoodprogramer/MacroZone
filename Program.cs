@@ -1,38 +1,39 @@
 ﻿using System;
-using static System.Net.Mime.MediaTypeNames;
+using System.IO;
+using System.Collections.Generic;
 
 public class Program
 {
+    private static List<string> lines;
 
     public static void Main(string[] args)
     {
-        if (args.Length == 0 || args[0] == "--help" || args[0] == "-h")
+        var argumentManager = new MacroZone.ArgumentsManager(args);
+        var macroReader = new MacroZone.MacroReader(args[0]);
+
+        if (args.Length == 0 || args[0] is "--help" or "-h")
         {
-            Console.WriteLine("Commands:");
-            Console.WriteLine("--help or -h: Show this menu");
-            Console.WriteLine("----------------------------------");
-            Console.WriteLine("{path\\to\\file}: Will run the file");
+            argumentManager.DisplayHelp();
+            return;
         }
 
-        else {
-
-            string filePath = args[0];
-            Console.WriteLine($"File Path: {filePath}");
-            if (File.Exists(filePath))
-            {
-                string content = File.ReadAllText(filePath);
-                Console.WriteLine("File Content:");
-                Console.WriteLine(content);
-            }
-            else
-            {
-                Console.WriteLine($"The file {filePath} does not exist.");
-            }
-
-        }
-
-        Console.ReadLine();
-
+        macroReader.readFile();
+        macroReader.Makeinstructions();
     }
 
+    private static void DisplayFileContent()
+    {
+        if (lines != null && lines.Count > 0)
+        {
+            Console.WriteLine("File Content:");
+            foreach (var line in lines)
+            {
+                Console.WriteLine(line);
+            }
+        }
+        else
+        {
+            Console.WriteLine("No content to display.");
+        }
+    }
 }
