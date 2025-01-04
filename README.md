@@ -80,3 +80,5 @@ Will sleep the macro
      MacroZone
      ```
    - The application should launch if added correctly.
+## Warning
+This program does not work if you lanch the EXE, you have to run it via the terminal
